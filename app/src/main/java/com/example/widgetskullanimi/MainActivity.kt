@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
             }
             else{
                     Log.e( "Widgets","Switch : OFF")
+
             }
 
         }
