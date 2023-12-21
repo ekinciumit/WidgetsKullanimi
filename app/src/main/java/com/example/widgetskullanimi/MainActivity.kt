@@ -2,6 +2,8 @@ package com.example.widgetskullanimi
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.widgetskullanimi.databinding.ActivityMainBinding
@@ -50,6 +52,21 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        val ulkeler =ArrayList<String>()
+        ulkeler.add("Türkiye")
+        ulkeler.add("İtalya")
+        ulkeler.add("Japonya")
+        ulkeler.add("Almanya")
+        val arrayAdapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,ulkeler)
+        binding.aoutoCompleteTextView.setAdapter(arrayAdapter)
+
+        binding.buttonBasla.setOnClickListener{
+            binding.progressBar.visibility = View.VISIBLE
+        }
+
+        binding.buttonDur.setOnClickListener{
+            binding.progressBar.visibility = View.INVISIBLE
+        }
 
         binding.buttonGoster.setOnClickListener{
             Log.e("Sonuc","Switch Durum : ${binding.switch1.isChecked}")
@@ -58,7 +75,8 @@ class MainActivity : AppCompatActivity() {
                 val buttonYazi = secilenButon.text.toString()
                 Log.e("Sonuc" ,"Toggle Durum : $buttonYazi")
             }
-
+            val ulke = binding.aoutoCompleteTextView.text.toString()
+            Log.e("Sonuc" ,"Ülke : $ulke")
         }
     }
 }
